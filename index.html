@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+        <input type="text" id="username">
+        <input type="text" id="password">
+       <button id="loginButton">login</button>
+       
+      
+    <script src="js/jquery.js"></script>
+    <script src="js/jquery.storageapi.min.js"></script>
+    <script src="js/json2.js"></script> 
+    
+  
+                
+         <script>       
+    
+
+        $("#loginButton").click(function(){
+
+            var user = { 
+                username: $("#username").val(),
+                password : $("#password").val()
+                       }
+
+            var json = "id=login&jsonData=" + JSON.stringify(user);
+        
+            var request = $.ajax( {
+                url: "http://127.0.0.1:52400/",
+                type: "POST",
+                contentType: "application/json; charset=utf-8",
+                data: json            
+            });
+
+            request.done(function (response, textStatus, jqXHR){
+                // log a message to the console
+                console.log(response);
+                //responseHandler(response);
+            });
+
+            // callback handler that will be called on failure
+            request.fail(function (jqXHR, textStatus, errorThrown){
+                // log the error to the console
+                console.error(
+                        "The following error occured: "+
+                        textStatus, errorThrown
+                );
+            });
+            
+            function responseHandler(response){
+            
+                
+                
+            } 
+
+
+        });
+
+
+
+    </script>
+ 
+</body>
+</html>
+
