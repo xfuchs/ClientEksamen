@@ -39,9 +39,11 @@
 
             request.done(function (response, textStatus, jqXHR){
                 // log a message to the console
-                console.log(response);
-                //responseHandler(response);
+                //console.log(response);
+                responseHandler(response);
+                
             });
+
 
             // callback handler that will be called on failure
             request.fail(function (jqXHR, textStatus, errorThrown){
@@ -54,7 +56,17 @@
             
             function responseHandler(response){
             
-                
+                if(response.authentication){
+                    //Vis fejl
+                } 
+                else{
+                    $.sessionStorage.set("userId", response.userid);
+                    $.sessionStorage.set("events", response.events);
+                    
+
+                    window.location.replace("calendar.html");
+                    //set din session
+                }
                 
             } 
 
