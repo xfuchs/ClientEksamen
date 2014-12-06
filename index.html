@@ -4,29 +4,26 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <script src="fullcalendar-2.2.3/lib/jquery.min.js"></script>
+    <script src="js/jquery.storageapi.min.js"></script>
+    <script src="js/json2.js"></script> 
 </head>
 <body>
 
         <input type="text" id="username">
         <input type="text" id="password">
-       <button id="loginButton">login</button>
-       
-      
-    <script src="js/jquery.js"></script>
-    <script src="js/jquery.storageapi.min.js"></script>
-    <script src="js/json2.js"></script> 
+        <button id="loginButton">login</button>
     
-  
                 
-         <script>       
+         
     
-
+    <script>       
         $("#loginButton").click(function(){
 
             var user = { 
                 username: $("#username").val(),
                 password : $("#password").val()
-                       }
+                }
 
             var json = "id=login&jsonData=" + JSON.stringify(user);
         
@@ -39,11 +36,10 @@
 
             request.done(function (response, textStatus, jqXHR){
                 // log a message to the console
-                //console.log(response);
+                console.log(response);
                 responseHandler(response);
                 
             });
-
 
             // callback handler that will be called on failure
             request.fail(function (jqXHR, textStatus, errorThrown){
@@ -56,25 +52,17 @@
             
             function responseHandler(response){
             
-                if(response.authentication){
-                    //Vis fejl
-                } 
-                else{
-                    $.sessionStorage.set("userId", response.userid);
-                    $.sessionStorage.set("events", response.events);
-                    
-
-                    window.location.replace("calendar.html");
-                    //set din session
+                if(response.authentication ){
+                    $.sessionStorage.set("userid", response.userid);
+                    window.location.replace("calendar.html")
+              
                 }
-                
-            } 
-
+                else {
+                   console.error("wrong password or username");
+                } 
+            }
 
         });
-
-
-
     </script>
  
 </body>
