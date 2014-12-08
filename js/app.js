@@ -36,7 +36,15 @@ var startCalendar = function(){
                 right: 'agendaDay agendaWeek month'
             },
             events: eventData,
-            firstDay: 1
+            firstDay: 1,
+           
+ monthNames: ['Januar', 'Februar', 'Marts', 'April', 'Maj', 'Juni', 'Juli',
+ 'August', 'September', 'Oktober', 'November', 'December'],
+           
+ dayNamesShort: ['Søn', 'Man', 'Tir', 'Ons', 'Tor', 'Fre', 'Lør']
+
+            
+            
         })
 
     });
