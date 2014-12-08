@@ -7,7 +7,8 @@
     });
 
         $("#logout").click(function(){      
-            alert("Du er logget ud");             
+            alert("Du er logget ud"); 
+            window.location.replace("index.html")
         });  
 
     getEvents.done(function (response, textStatus, jqXHR) {
